@@ -1,14 +1,14 @@
-package br.ufjf.dcc196.trab01;
+package br.ufjf.dcc196.trab01.Controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class HomeController {
+public class MembrosController {
 
-    @RequestMapping({"", "index.html"})
+    @RequestMapping("membros.html")
     public String home()
     {
-        return "index";
+        return "membros";
     }
 }
