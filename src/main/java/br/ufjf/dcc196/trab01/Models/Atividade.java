@@ -9,6 +9,7 @@ import javax.xml.crypto.Data;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+@Entity
 public class Atividade {
 
     @Id

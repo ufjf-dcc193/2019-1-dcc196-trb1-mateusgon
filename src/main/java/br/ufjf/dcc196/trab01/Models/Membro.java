@@ -1,5 +1,6 @@
 package br.ufjf.dcc196.trab01.Models;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -9,6 +10,7 @@ import javax.xml.crypto.Data;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+@Entity
 public class Membro {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
