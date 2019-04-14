@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@include file="jspf/cabecalho.html" %>
+<c:import url="/WEB-INF/views/cabecalho.jsp"/>
 
 <main role="main" class="inner cover">
     <table class="table">
@@ -27,4 +27,4 @@
       </table>
 </main>
 
-<%@include file="jspf/rodape.html" %>
+<c:import url="/WEB-INF/views/rodape.jsp"/>

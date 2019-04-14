@@ -9,6 +9,6 @@ public class AtividadesController {
     @RequestMapping("atividades.html")
     public String home()
     {
-        return "atividades";
+        return "atividades/index";
     }
 }

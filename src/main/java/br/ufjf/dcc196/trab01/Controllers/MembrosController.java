@@ -9,6 +9,6 @@ public class MembrosController {
     @RequestMapping("membros.html")
     public String home()
     {
-        return "membros";
+        return "membros/index";
     }
 }
