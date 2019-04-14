@@ -7,7 +7,7 @@
   <table class="table scroll">
     <thead>
       <tr>
-        <th>Nome</th>
+        <th>Sede</th>
         <th>Opções</th>
       </tr>
     </thead>
