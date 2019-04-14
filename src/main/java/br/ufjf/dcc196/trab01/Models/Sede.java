@@ -25,7 +25,6 @@ public class Sede {
     @OneToMany(mappedBy = "sede", cascade = CascadeType.ALL)
     private Set<Atividade> atividades;
 
-
     public Sede() {
 
     }
