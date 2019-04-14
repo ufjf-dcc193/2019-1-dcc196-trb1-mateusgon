@@ -11,6 +11,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Sede {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
@@ -20,9 +21,9 @@ public class Sede {
     private String bairro;
     private String telefone;
     private String site;
-    @OneToMany(mappedBy = "sede", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "sedeMembro", cascade = CascadeType.ALL)
     private Set<Membro> membros;
-    @OneToMany(mappedBy = "sede", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "sedeAtividade", cascade = CascadeType.ALL)
     private Set<Atividade> atividades;
 
     public Sede() {

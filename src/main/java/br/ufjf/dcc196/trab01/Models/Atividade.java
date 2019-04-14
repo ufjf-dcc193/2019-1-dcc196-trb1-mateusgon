@@ -25,7 +25,7 @@ public class Atividade {
     private Date dataDeFim = null;
     @ManyToOne
     @JoinColumn
-    private Sede sede;
+    private Sede sedeAtividade;
 
     public Atividade() {
 
@@ -70,7 +70,7 @@ public class Atividade {
      * @return the sede
      */
     public Sede getSede() {
-        return sede;
+        return sedeAtividade;
     }
 
     /**
@@ -105,7 +105,7 @@ public class Atividade {
      * @param sede the sede to set
      */
     public void setSede(Sede sede) {
-        this.sede = sede;
+        this.sedeAtividade = sede;
     }
 
     /**

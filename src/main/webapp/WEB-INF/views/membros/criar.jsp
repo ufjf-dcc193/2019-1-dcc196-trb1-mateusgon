@@ -5,32 +5,35 @@
 <main role="main" class="inner cover">
     <form method="post" action="criar">
         <div class="form-group">
-            <label for="nomeSede">Nome da Sede</label>
-            <input type="text" class="form-control" name="nome" id="nomeSede" placeholder="Digite o nome da sede">
+            <label for="nomeMembro">Nome do membro</label>
+            <input type="text" class="form-control" name="name" id="nomeMembro" placeholder="Digite o nome do membro">
         </div>
         <div class="form-group">
-            <label for="estadoSede">Escolha o estado</label>
-            <select name="estado" class="form-control" id="estados">
-                <option value=""></option>
+            <label for="funcaoMembro">Função do membro</label>
+            <input type="text" class="form-control" name="funcao" id="funcaoMembro"
+                placeholder="Digite a função do funcionário">
+        </div>
+        <div class="form-group">
+            <label for="email">Email do membro</label>
+            <input type="text" class="form-control" name="email" id="email" placeholder="Digite o email do membro">
+        </div>
+        <div class="form-group">
+            <label for="dataDeEntrada">Data de entrada</label>
+            <input type="date" class="form-control" name="dataDeEntrada" id="dataDeEntrada"
+                placeholder="Digite a data de entrada">
+        </div>
+        <div class="form-group">
+            <label for="dataDeSaida">Data de saída</label>
+            <input type="date" class="form-control" name="dataDeSaida" id="dataDeEntrada"
+                placeholder="Digite a data de saída">
+        </div>
+        <div class="form-group">
+            <label for="cidadeSede">Escolha a sede</label>
+            <select name="sedeMembro" class="form-control" id="sedes">
+                <c:forEach var="sede" items="${sedes}">
+                    <option value="${sede.id}"> ${sede.nome} </option>
+                </c:forEach>
             </select>
-        </div>
-        <div class="form-group">
-            <label for="cidadeSede">Escolha a cidade</label>
-            <select name="cidade" class="form-control" id="cidades">
-                <option value=""></option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="nomeSede">Bairro da Sede</label>
-            <input type="text" class="form-control" name="bairro" id="bairroSede" placeholder="Digite o bairro da sede">
-        </div>
-        <div class="form-group">
-            <label for="nomeSede">Telefone da sede</label>
-            <input type="text" class="form-control" name="telefone" id="telefone" placeholder="Digite o telefone da sede">
-        </div>
-        <div class="form-group">
-            <label for="nomeSede">Site da sede</label>
-            <input type="text" class="form-control" name="site" id="siteSede" placeholder="Digite o site da sede">
         </div>
         <button type="submit" class="btn btn-primary">Cadastrar</button>
     </form>

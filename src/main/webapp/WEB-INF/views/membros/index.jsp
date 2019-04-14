@@ -7,14 +7,14 @@
   <table class="table scroll">
     <thead>
       <tr>
-        <th>Sede</th>
+        <th>Membros</th>
         <th>Opções</th>
       </tr>
     </thead>
     <tbody>
       <c:forEach var="membro" items="${membros}">
         <tr>
-          <td>${sede.nome}</td>
+          <td>${membro.name}</td>
           <td>
             <a href="/membros/detalhes?id=${membro.id}" ><i class="material-icons">&#xe88e;</i></a>            
             <a href="/membros/editar?id=${membro.id}" ><i class="material-icons">&#xe254;</i></a>

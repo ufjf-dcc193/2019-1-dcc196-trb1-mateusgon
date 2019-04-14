@@ -13,6 +13,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Membro {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
@@ -25,7 +26,7 @@ public class Membro {
     private Date dataDeSaida = null;
     @ManyToOne
     @JoinColumn
-    private Sede sede;
+    private Sede sedeMembro;
 
     public Membro() {
 
@@ -86,7 +87,7 @@ public class Membro {
      * @param sede the sede to set
      */
     public void setSede(Sede sede) {
-        this.sede = sede;
+        this.sedeMembro = sede;
     }
 
     /**
@@ -135,7 +136,7 @@ public class Membro {
      * @return the sede
      */
     public Sede getSede() {
-        return sede;
+        return sedeMembro;
     }
     
 }
