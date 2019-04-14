@@ -1,11 +1,13 @@
 package br.ufjf.dcc196.trab01.Models;
 
+import java.util.Date;
+
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.xml.crypto.Data;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -18,19 +20,18 @@ public class Atividade {
     private String titulo;
     private String descricao;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Data dataDeInicio = null;
+    private Date dataDeInicio = null;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Data dataDeFim = null;
+    private Date dataDeFim = null;
     @ManyToOne
     @JoinColumn
     private Sede sede;
 
     public Atividade() {
-        
+
     }
 
-    public Atividade(String titulo, String descricao, Data dataDeInicio, Data dataDeFim)
-    {
+    public Atividade(String titulo, String descricao, Date dataDeInicio, Date dataDeFim) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.dataDeInicio = dataDeInicio;
@@ -40,14 +41,14 @@ public class Atividade {
     /**
      * @return the dataDeFim
      */
-    public Data getDataDeFim() {
+    public Date getDataDeFim() {
         return dataDeFim;
     }
-    
+
     /**
      * @return the dataDeInicio
      */
-    public Data getDataDeInicio() {
+    public Date getDataDeInicio() {
         return dataDeInicio;
     }
 
@@ -82,14 +83,14 @@ public class Atividade {
     /**
      * @param dataDeFim the dataDeFim to set
      */
-    public void setDataDeFim(Data dataDeFim) {
+    public void setDataDeFim(Date dataDeFim) {
         this.dataDeFim = dataDeFim;
     }
 
     /**
      * @param dataDeInicio the dataDeInicio to set
      */
-    public void setDataDeInicio(Data dataDeInicio) {
+    public void setDataDeInicio(Date dataDeInicio) {
         this.dataDeInicio = dataDeInicio;
     }
 

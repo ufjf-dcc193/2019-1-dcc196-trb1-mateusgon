@@ -1,12 +1,13 @@
 package br.ufjf.dcc196.trab01.Models;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.xml.crypto.Data;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -19,9 +20,9 @@ public class Membro {
     private String funcao;
     private String email;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Data dataDeEntrada = null;
+    private Date dataDeEntrada = null;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Data dataDeSaida = null;
+    private Date dataDeSaida = null;
     @ManyToOne
     @JoinColumn
     private Sede sede;
@@ -30,7 +31,7 @@ public class Membro {
 
     }
 
-    public Membro(String name, String funcao, String email, Data dataDeEntrada, Data dataDeSaida)
+    public Membro(String name, String funcao, String email, Date dataDeEntrada, Date dataDeSaida)
     {
         this.name = name;
         this.funcao = funcao;
@@ -42,14 +43,14 @@ public class Membro {
     /**
      * @param dataDeEntrada the dataDeEntrada to set
      */
-    public void setDataDeEntrada(Data dataDeEntrada) {
+    public void setDataDeEntrada(Date dataDeEntrada) {
         this.dataDeEntrada = dataDeEntrada;
     }
 
     /**
      * @param dataDeSaida the dataDeSaida to set
      */
-    public void setDataDeSaida(Data dataDeSaida) {
+    public void setDataDeSaida(Date dataDeSaida) {
         this.dataDeSaida = dataDeSaida;
     }
 
@@ -91,14 +92,14 @@ public class Membro {
     /**
      * @return the dataDeEntrada
      */
-    public Data getDataDeEntrada() {
+    public Date getDataDeEntrada() {
         return dataDeEntrada;
     }
 
     /**
      * @return the dataDeSaida
      */
-    public Data getDataDeSaida() {
+    public Date getDataDeSaida() {
         return dataDeSaida;
     }
 
