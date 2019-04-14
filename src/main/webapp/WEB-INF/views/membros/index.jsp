@@ -3,68 +3,27 @@
 <c:import url="/WEB-INF/views/cabecalho.jsp" />
 
 <main role="main" class="inner cover">
+
   <table class="table scroll">
     <thead>
       <tr>
-        <th>Nome</th>
+        <th>Sede</th>
         <th>Opções</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>3</td>
-        <td>Larry</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Larry</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Larry</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Larry</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Larry</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Larry</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Larry</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Larry</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Larry</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Larry</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Larry</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Larry</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Larry</td>
-      </tr>
+      <c:forEach var="membro" items="${membros}">
+        <tr>
+          <td>${sede.nome}</td>
+          <td>
+            <a href="/membros/detalhes?id=${membro.id}" ><i class="material-icons">&#xe88e;</i></a>            
+            <a href="/membros/editar?id=${membro.id}" ><i class="material-icons">&#xe254;</i></a>
+            <a href="/membros/excluir?id=${membro.id}" ><i class="material-icons">&#xe872;</i></a>
+          </td>
+        </tr>
+      </c:forEach>
     </tbody>
   </table>
 </main>
-
+<a href="/membros/criar" class="btn btn-outline-dark" role="button">Cadastrar membro</a>
 <c:import url="/WEB-INF/views/rodape.jsp" />

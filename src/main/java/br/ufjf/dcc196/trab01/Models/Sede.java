@@ -1,9 +1,13 @@
 package br.ufjf.dcc196.trab01.Models;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Sede {
@@ -16,6 +20,11 @@ public class Sede {
     private String bairro;
     private String telefone;
     private String site;
+    @OneToMany(mappedBy = "sede", cascade = CascadeType.ALL)
+    private Set<Membro> membros;
+    @OneToMany(mappedBy = "sede", cascade = CascadeType.ALL)
+    private Set<Atividade> atividades;
+
 
     public Sede() {
 

@@ -74,7 +74,6 @@ public class SedesController {
     {
         Sede sede = repositorySede.getOne(id);
         ModelAndView mv = new ModelAndView();
-        
         mv.setViewName("");
         return mv;
     }
