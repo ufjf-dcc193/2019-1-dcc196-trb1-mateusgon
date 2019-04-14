@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HomeController {
 
-    @RequestMapping({"", "index.html"})
+    @RequestMapping({"", "index"})
     public String home()
     {
         return "home/index";
     }
 
-    @RequestMapping("sobre.html")
+    @RequestMapping("sobre")
     public String about() {
         return "home/sobre";
     }

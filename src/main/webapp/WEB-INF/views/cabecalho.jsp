@@ -24,20 +24,20 @@
       }
     </style>
 
-    <link rel="styleSheet" type="text/css" href="css/cover.css">
+    <link rel="styleSheet" type="text/css" href="/css/cover.css">
 
   </head>
   <body class="text-center" background="http://soupetropolis.com/wp-content/uploads/2018/01/IMG_0872-1024x768.jpg" style="background-repeat: no-repeat; background-size: 100%; height: 100vh;">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
   <header class="masthead mb-auto">
     <div class="inner">
-      <a href="/index.html"> <h3 class="masthead-brand">Gestão de ONGs</h3> </a>
+      <a href="/index"> <h3 class="masthead-brand">Gestão de ONGs</h3> </a>
       <nav class="nav nav-masthead justify-content-center">
-        <a id="link1" class="nav-link" href="/index.html">Início</a>
-        <a id="link2" class="nav-link" href="/sedes.html">Sedes</a>
-        <a id="link3" class="nav-link" href="/membros.html">Membros</a>
-        <a id="link4" class="nav-link" href="/atividades.html">Atividades</a>
-        <a id="link5" class="nav-link" href="/sobre.html">Sobre</a>
+        <a id="link1" class="nav-link" href="/index">Início</a>
+        <a id="link2" class="nav-link" href="/sedes">Sedes</a>
+        <a id="link3" class="nav-link" href="/membros">Membros</a>
+        <a id="link4" class="nav-link" href="/atividades">Atividades</a>
+        <a id="link5" class="nav-link" href="/sobre">Sobre</a>
       </nav>
     </div>
   </header>

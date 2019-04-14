@@ -1,6 +1,7 @@
-$( document ).ready(function() {
+$(document).ready(function() {
+    
     var url_atual = window.location.href;
-    if(url_atual.includes("index"))
+    if(url_atual.includes("index") || url_atual.includes("localhost"))
     {
         $('#link1').addClass("active");
     }
@@ -21,3 +22,4 @@ $( document ).ready(function() {
         $('#link5').addClass("active");
     }
 });
+
