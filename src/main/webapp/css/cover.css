@@ -140,7 +140,15 @@ tbody td:last-child, thead th:last-child {
 
 .table tbody td, .table tbody th {
   padding: .75rem;
-  border-bottom: 1px solid #dee2e6;
+  border-bottom: 0px solid #dee2e6;
+}
+
+a, a:focus, a:hover {
+  color: #212529;
+}
+
+a:focus, a:hover {
+  color: #fff;
 }
 
 /*

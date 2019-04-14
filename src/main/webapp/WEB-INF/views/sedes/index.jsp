@@ -12,58 +12,16 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>3</td>
-        <td>Larry</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Larry</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Larry</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Larry</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Larry</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Larry</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Larry</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Larry</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Larry</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Larry</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Larry</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Larry</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Larry</td>
-      </tr>
+      <c:forEach var="sede" items="${sedes}">
+        <tr>
+          <td>${sede.nome}</td>
+          <td>
+            <a href="/sedes/detalhes?id=${sede.id}" ><i class="material-icons">&#xe88e;</i></a>            
+            <a href="/sedes/editar?id=${sede.id}" ><i class="material-icons">&#xe254;</i></a>
+            <a href="/sedes/excluir?id=${sede.id}" ><i class="material-icons">&#xe872;</i></a>
+          </td>
+        </tr>
+      </c:forEach>
     </tbody>
   </table>
 </main>

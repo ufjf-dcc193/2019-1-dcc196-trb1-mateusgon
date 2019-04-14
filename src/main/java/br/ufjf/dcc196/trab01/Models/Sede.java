@@ -1,6 +1,15 @@
 package br.ufjf.dcc196.trab01.Models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Sede {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
     private String nome;
     private String estado;
     private String cidade;
@@ -12,6 +21,28 @@ public class Sede {
 
     }
 
+    public Sede(String nome, String estado, String cidade, String bairro, String telefone, String site) {
+        this.nome = nome;
+        this.estado = estado;
+        this.cidade = cidade;
+        this.bairro = bairro;
+        this.telefone = telefone;
+        this.site = site;
+    }
+
+    /**
+     * @return the id
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
     /**
      * @return the bairro
      */

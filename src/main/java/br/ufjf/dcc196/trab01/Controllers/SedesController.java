@@ -1,37 +1,92 @@
 package br.ufjf.dcc196.trab01.Controllers;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.ufjf.dcc196.trab01.Models.Sede;
+import br.ufjf.dcc196.trab01.Persistence.SedeRepository;
 
 @Controller
 @RequestMapping("/sedes")
 public class SedesController {
 
+    @Autowired
+    private SedeRepository repositorySede;
+    
     @RequestMapping(value = {"/", "", "/index"})
     public ModelAndView home()
     {
-        return new ModelAndView("sedes/index");
+        ModelAndView mv = new ModelAndView();
+        List<Sede> sedes = repositorySede.findAll();
+        mv.addObject("sedes", sedes);
+        mv.setViewName("sedes/index");
+        return mv;
     }
 
     @RequestMapping(value = {"/criar"}, method = RequestMethod.GET)
     public ModelAndView carregaForm()
     {
-        return new ModelAndView("sedes/criar");
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("sedes/criar");
+        return mv;
     }
 
     @RequestMapping(value = {"/criar"}, method = RequestMethod.POST)
     public ModelAndView recebeForm(Sede sede)
     {
-        System.out.println(sede.getNome());
-        System.out.println(sede.getSite());
-        System.out.println(sede.getBairro());
-        System.out.println(sede.getCidade());
-        System.out.println(sede.getEstado());
-        System.out.println(sede.getTelefone());
-        return new ModelAndView("sedes/index");
+        repositorySede.save(sede);
+        ModelAndView mv = new ModelAndView();
+        List<Sede> sedes = repositorySede.findAll();
+        mv.addObject("sedes", sedes);
+        mv.setViewName("sedes/index");
+        return mv;
+    }
+
+    @RequestMapping(value = {"/editar"}, method = RequestMethod.GET)
+    public ModelAndView carregaEditar()
+    {
+        ModelAndView mv = new ModelAndView();
+        List<Sede> sedes = repositorySede.findAll();
+        mv.addObject("sedes", sedes);
+        mv.setViewName("sedes/index");
+        return mv;
+    }
+
+    @RequestMapping(value = {"/editar"}, method = RequestMethod.POST)
+    public ModelAndView recebeEditar()
+    {
+        ModelAndView mv = new ModelAndView();
+        List<Sede> sedes = repositorySede.findAll();
+        mv.addObject("sedes", sedes);
+        mv.setViewName("sedes/index");
+        return mv;
+    }
+
+
+    @RequestMapping(value = {"/detalhes"}, method = RequestMethod.GET)
+    public ModelAndView carregaDetalhes(@RequestParam(value = "id", required = true) Long id)
+    {
+        Sede sede = repositorySede.getOne(id);
+        ModelAndView mv = new ModelAndView();
+        
+        mv.setViewName("");
+        return mv;
+    }
+
+    @RequestMapping(value = {"/excluir"}, method = RequestMethod.GET)
+    public ModelAndView carregaExcluir(@RequestParam(value = "id", required = true) Long id)
+    {
+        repositorySede.deleteById(id);
+        ModelAndView mv = new ModelAndView();
+        List<Sede> sedes = repositorySede.findAll();
+        mv.addObject("sedes", sedes);
+        mv.setViewName("sedes/index");
+        return mv;
     }
 }
