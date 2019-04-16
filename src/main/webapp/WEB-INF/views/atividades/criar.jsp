@@ -6,21 +6,36 @@
     <form method="post" action="criar">
         <div class="form-group">
             <label for="tituloAtividade">Título da atividade</label>
-            <input type="text" class="form-control" name="titulo" id="tituloAtividade" placeholder="Digite o título da atividade">
+            <input type="text" class="form-control" name="titulo" id="tituloAtividade"
+                placeholder="Digite o título da atividade" required>
         </div>
         <div class="form-group">
-            <label for="textoAtividade">Texto de descrição</label> <br/>
+            <label for="textoAtividade">Texto de descrição</label> <br />
             <textarea name="descricao">Descreva a atividade</textarea>
+        </div>
+        <div class="form-group">
+            <label for="categoria">Escolha a categoria</label>
+            <select name="categoria" class="form-control" id="categoria">
+                <option value="Assistencial"> Assistencial </option>
+                <option value="Jurídica"> Jurídica </option>
+                <option value="Financeira"> Financeira </option>
+                <option value="Executiva"> Executiva </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="horasDeAtividade">Data de entrada</label>
+            <input type="number" class="form-control" name="horasDeAtividade" id="horasDeAtividade"
+                placeholder="Horas de atividade (Utilize somente números)" required>
         </div>
         <div class="form-group">
             <label for="dataDeInicio">Data de entrada</label>
             <input type="date" class="form-control" name="dataDeInicio" id="dataDeInicio"
-                placeholder="Digite a data de início">
+                placeholder="Digite a data de início" required>
         </div>
         <div class="form-group">
             <label for="dataDeFim">Data de saída</label>
-            <input type="date" class="form-control" name="dataDeFim" id="dataDeFim"
-                placeholder="Digite a data de fim">
+            <input type="date" class="form-control" name="dataDeFim" id="dataDeFim" placeholder="Digite a data de fim"
+                required>
         </div>
         <div class="form-group">
             <label for="cidadeSede">Escolha a sede</label>
