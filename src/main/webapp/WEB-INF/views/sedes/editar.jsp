@@ -37,7 +37,7 @@
                 placeholder="Digite o site da sede">
         </div>
         <input id="id" name="id" type="hidden" value="${sede.id}"/> 
-        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <button type="submit" class="btn btn-primary">Salvar</button>
     </form>
 </main>
 <c:import url="/WEB-INF/views/layout/rodape.jsp" />

@@ -21,9 +21,9 @@ public class Membro {
     private String funcao;
     private String email;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date dataDeEntrada = null;
+    private Date dataDeEntrada;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date dataDeSaida = null;
+    private Date dataDeSaida;
     @ManyToOne
     @JoinColumn
     private Sede sedeMembro;

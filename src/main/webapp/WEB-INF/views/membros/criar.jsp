@@ -6,21 +6,21 @@
     <form method="post" action="criar">
         <div class="form-group">
             <label for="nomeMembro">Nome do membro</label>
-            <input type="text" class="form-control" name="name" id="nomeMembro" placeholder="Digite o nome do membro">
+            <input type="text" class="form-control" name="name" id="nomeMembro" placeholder="Digite o nome do membro" required>
         </div>
         <div class="form-group">
             <label for="funcaoMembro">Função do membro</label>
             <input type="text" class="form-control" name="funcao" id="funcaoMembro"
-                placeholder="Digite a função do funcionário">
+                placeholder="Digite a função do funcionário" required>
         </div>
         <div class="form-group">
             <label for="email">Email do membro</label>
-            <input type="text" class="form-control" name="email" id="email" placeholder="Digite o email do membro">
+            <input type="text" class="form-control" name="email" id="email" placeholder="Digite o email do membro" required>
         </div>
         <div class="form-group">
             <label for="dataDeEntrada">Data de entrada</label>
             <input type="date" class="form-control" name="dataDeEntrada" id="dataDeEntrada"
-                placeholder="Digite a data de entrada">
+                placeholder="Digite a data de entrada" required>
         </div>
         <div class="form-group">
             <label for="dataDeSaida">Data de saída</label>
