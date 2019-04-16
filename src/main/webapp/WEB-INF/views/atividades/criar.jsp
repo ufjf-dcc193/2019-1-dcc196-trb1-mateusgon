@@ -15,7 +15,7 @@
         </div>
         <div class="form-group">
             <label for="categoria">Escolha a categoria</label>
-            <select name="categoria" class="form-control" id="categoria">
+            <select name="categoria" class="form-control" id="categoria" required>
                 <option value="Assistencial"> Assistencial </option>
                 <option value="Jurídica"> Jurídica </option>
                 <option value="Financeira"> Financeira </option>
@@ -23,7 +23,7 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="horasDeAtividade">Data de entrada</label>
+            <label for="horasDeAtividade">Horas de atividade</label>
             <input type="number" class="form-control" name="horasDeAtividade" id="horasDeAtividade"
                 placeholder="Horas de atividade (Utilize somente números)" required>
         </div>

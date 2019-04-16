@@ -1,5 +1,6 @@
 package br.ufjf.dcc196.trab01.Controllers;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,11 @@ public class AtividadesController {
     @RequestMapping(value = {"/", "", "/index"})
     public ModelAndView home()
     {
-        return new ModelAndView("atividades/index");
+        ModelAndView mv = new ModelAndView();
+        List<Atividade> atividades = repositoryAtividade.findAll();
+        mv.addObject("atividades", atividades);
+        mv.setViewName("atividades/index");
+        return mv;
     }
 
     @RequestMapping(value = {"/criar"}, method = RequestMethod.GET)
@@ -52,16 +57,33 @@ public class AtividadesController {
         return mv;
     }
 
-    @RequestMapping(value = {"/editar"}, method = RequestMethod.GET)
-    public ModelAndView carregaEditar()
-    {
-        return null;
+    @RequestMapping(value = { "/editar" }, method = RequestMethod.GET)
+    public ModelAndView carregaEditar(@RequestParam(value = "id", required = true) Long id) {
+        Atividade atividade = repositoryAtividade.getOne(id);
+        SimpleDateFormat formatBra = new SimpleDateFormat("yyyy-MM-dd");
+        String dataDeInicio = formatBra.format(atividade.getDataDeInicio());
+        String dataDeFim = formatBra.format(atividade.getDataDeFim());
+        ModelAndView mv = new ModelAndView();
+        List<Sede> sedes = repositorySede.findAll();
+        mv.addObject("dataDeInicio", dataDeInicio);
+        mv.addObject("dataDeFim", dataDeFim);
+        mv.addObject("sedes", sedes);
+        mv.addObject("sede", atividade.getSede());
+        mv.addObject("atividade", atividade);
+        mv.setViewName("atividades/editar");
+        return mv;
     }
 
     @RequestMapping(value = {"/editar"}, method = RequestMethod.POST)
-    public ModelAndView recebeEditar()
+    public ModelAndView recebeEditar(@RequestParam(value = "id", required = true) Long id, Atividade atividade)
     {
-        return null;
+        atividade.setId(id);
+        repositoryAtividade.save(atividade);
+        ModelAndView mv = new ModelAndView();
+        List<Atividade> atividades = repositoryAtividade.findAll();
+        mv.addObject("atividades", atividades);
+        mv.setViewName("atividades/index");
+        return mv;
     }
 
 

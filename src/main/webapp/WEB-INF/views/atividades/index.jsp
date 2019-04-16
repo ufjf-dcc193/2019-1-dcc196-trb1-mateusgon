@@ -8,6 +8,7 @@
     <thead>
       <tr>
         <th>Atividades</th>
+        <th>Sede</th>
         <th>Opções</th>
       </tr>
     </thead>
@@ -15,6 +16,7 @@
       <c:forEach var="atividade" items="${atividades}">
         <tr>
           <td>${atividade.titulo}</td>
+          <td>${atividade.sede.nome}</td>
           <td>
             <a href="/atividades/detalhes?id=${atividade.id}" ><i class="material-icons">&#xe88e;</i></a>            
             <a href="/atividades/editar?id=${atividade.id}" ><i class="material-icons">&#xe254;</i></a>

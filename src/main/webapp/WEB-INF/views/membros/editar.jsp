@@ -30,7 +30,7 @@
             placeholder="Digite a data de saída" value="${dataDeSaida}" required>
         </div>
         <div class="form-group">
-            <label for="cidadeSede">Escolha a sede</label>
+            <label for="sedeMembro">Escolha a sede</label>
             <select name="sedeMembro" class="form-control" id="sedes" required>
                 <option value="${sede.id}" selected> ${sede.nome} </option>
                 <c:forEach var="sedeAux" items="${sedes}">
