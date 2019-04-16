@@ -25,11 +25,11 @@
         <div class="form-group">
             <label for="dataDeSaida">Data de saída</label>
             <input type="date" class="form-control" name="dataDeSaida" id="dataDeEntrada"
-                placeholder="Digite a data de saída">
+                placeholder="Digite a data de saída" required>
         </div>
         <div class="form-group">
             <label for="cidadeSede">Escolha a sede</label>
-            <select name="sedeMembro" class="form-control" id="sedes">
+            <select name="sedeMembro" class="form-control" id="sedes" required>
                 <c:forEach var="sede" items="${sedes}">
                     <option value="${sede.id}"> ${sede.nome} </option>
                 </c:forEach>

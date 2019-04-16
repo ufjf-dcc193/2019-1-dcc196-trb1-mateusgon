@@ -49,18 +49,20 @@ public class SedesController {
     }
 
     @RequestMapping(value = {"/editar"}, method = RequestMethod.GET)
-    public ModelAndView carregaEditar()
+    public ModelAndView carregaEditar(@RequestParam(value = "id", required = true) Long id)
     {
+        Sede sede = repositorySede.getOne(id);
         ModelAndView mv = new ModelAndView();
-        List<Sede> sedes = repositorySede.findAll();
-        mv.addObject("sedes", sedes);
-        mv.setViewName("sedes/index");
+        mv.addObject("sede", sede);
+        mv.setViewName("sedes/editar");
         return mv;
     }
 
     @RequestMapping(value = {"/editar"}, method = RequestMethod.POST)
-    public ModelAndView recebeEditar()
+    public ModelAndView recebeEditar(@RequestParam(value = "id", required = true) Long id, Sede sede)
     {
+        sede.setId(id);
+        repositorySede.save(sede);
         ModelAndView mv = new ModelAndView();
         List<Sede> sedes = repositorySede.findAll();
         mv.addObject("sedes", sedes);
