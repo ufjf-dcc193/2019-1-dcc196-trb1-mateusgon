@@ -20,11 +20,28 @@ $(document).ready(function () {
     if (!url_atual.includes("sedes/editar")) {
         carregarCidadesEEstados();
     }
-    else
-    {
+    else {
         carregarCidadesEEstadosModificado();
     }
 
+    $('#button').click(function () {
+
+        var first = $('#firstInput').val();
+        var last = $('#lastInput').val();
+
+        $.ajax({
+            type: 'GET',
+            url: "sedes/detalhes/"+first+"/"+last,
+            dataType: 'json',
+            success: function (resultados) {
+                
+            },
+            error: function () {
+                alert("Erro ao realizar requisição!");
+            }
+
+        });
+    });
 });
 
 function carregarCidadesEEstados() {
@@ -63,7 +80,7 @@ function carregarCidadesEEstadosModificado() {
     $.getJSON('/json/estados_cidades.json', function (data) {
         var atual = $("#estadoAtual").val();
         var items = [];
-        var options = '<option value="'+atual+'">'+atual+'</option>';
+        var options = '<option value="' + atual + '">' + atual + '</option>';
         $.each(data, function (key, val) {
             options += '<option value="' + val.nome + '">' + val.nome + '</option>';
         });
@@ -79,11 +96,10 @@ function carregarCidadesEEstadosModificado() {
                 str += $(this).text();
             });
 
-            if(typeof cidadeAtual !== "undefined") {
+            if (typeof cidadeAtual !== "undefined") {
                 options_cidades += '<option value="' + cidadeAtual + '">' + cidadeAtual + '</option>';
             }
-            else
-            {
+            else {
                 options_cidades = '';
             }
 
