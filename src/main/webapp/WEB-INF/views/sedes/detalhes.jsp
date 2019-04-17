@@ -6,7 +6,7 @@
     <h4>Nome: ${sede.nome}</h4>
     <h4>Endereço: Estado: ${sede.estado}, Cidade: ${sede.cidade}, Bairro: ${sede.bairro}</h4>
     <h4>Telefone: ${sede.telefone} </h4>
-    <h6>Site: <a href="${sede.site}">${sede.site}</a></h6>
+    <h4>Site: <a href="${sede.site}">${sede.site}</a></h4>
     <ul class="abas">
         <li class="aba">
             Selecione uma aba:

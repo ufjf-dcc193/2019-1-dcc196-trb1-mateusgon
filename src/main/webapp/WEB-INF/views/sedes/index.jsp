@@ -16,9 +16,9 @@
         <tr>
           <td>${sede.nome}</td>
           <td>
-            <a href="/sedes/detalhes?id=${sede.id}" ><i class="material-icons">&#xe88e;</i></a>            
-            <a href="/sedes/editar?id=${sede.id}" ><i class="material-icons">&#xe254;</i></a>
-            <a href="/sedes/excluir?id=${sede.id}" ><i class="material-icons">&#xe872;</i></a>
+            <a href="/sedes/detalhes/${sede.id}" ><i class="material-icons">&#xe88e;</i></a>            
+            <a href="/sedes/editar/${sede.id}" ><i class="material-icons">&#xe254;</i></a>
+            <a href="/sedes/excluir/${sede.id}" ><i class="material-icons">&#xe872;</i></a>
           </td>
         </tr>
       </c:forEach>

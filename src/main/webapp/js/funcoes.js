@@ -7,9 +7,8 @@ $(document).ready(function () {
     else if (url_atual.includes("sedes")) {
         $('#link2').addClass("active");
         if (url_atual.includes("detalhes")) {
-            console.log(url_atual);
-            var partes = url_atual.split('=');
-            var valor = partes[1];
+            var partes = url_atual.split('/');
+            var valor = partes[5];
             carregaTabelaCategoria(valor);
         }
     }
@@ -124,9 +123,9 @@ carregaTabela = function (infoSede, id) {
 
                     cols += '<td>' + data[i].titulo + '</td>';
                     cols += '<td>' + data[i].categoria + '/' + data[i].horasDeAtividade + '</td>';
-                    cols += '<td> <a href="/atividades/detalhes?id=' + data[i].id + '" > <i class="material-icons">&#xe88e; </i> </a>' +
-                        '<a href="/atividades/editar?id=' + data[i].id + '"><i class="material-icons">&#xe254;</i></a>' +
-                        '<a href="/atividades/excluir?id=' + data[i].id + '" ><i class="material-icons">&#xe872;</i></a> </td> </tr>';
+                    cols += '<td> <a href="/atividades/detalhes/' + data[i].id + '" > <i class="material-icons">&#xe88e; </i> </a>' +
+                        '<a href="/atividades/editar/' + data[i].id + '"><i class="material-icons">&#xe254;</i></a>' +
+                        '<a href="/atividades/excluir/' + data[i].id + '" ><i class="material-icons">&#xe872;</i></a> </td> </tr>';
                     newRow.append(cols);
                     $("#idTabela").append(newRow);
                 }
@@ -141,9 +140,9 @@ carregaTabela = function (infoSede, id) {
 
                     cols += '<td>' + data[i].name + '</td>';
                     cols += '<td>' + data[i].email + '</td>';
-                    cols += '<td> <a href="/membros/detalhes?id=' + data[0].id + '" > <i class="material-icons">&#xe88e; </i> </a>' +
-                        '<a href="/membros/editar?id=' + data[0].id + '"><i class="material-icons">&#xe254;</i></a>' +
-                        '<a href="/membros/excluir?id=' + data[0].id + '" ><i class="material-icons">&#xe872;</i></a> </td> </tr>';
+                    cols += '<td> <a href="/membros/detalhes/' + data[0].id + '" > <i class="material-icons">&#xe88e; </i> </a>' +
+                        '<a href="/membros/editar/' + data[0].id + '"><i class="material-icons">&#xe254;</i></a>' +
+                        '<a href="/membros/excluir/' + data[0].id + '" ><i class="material-icons">&#xe872;</i></a> </td> </tr>';
                     newRow.append(cols);
                     $("#idTabela").append(newRow);
                 }

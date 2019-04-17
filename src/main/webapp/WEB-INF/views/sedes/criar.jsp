@@ -3,7 +3,7 @@
 <c:import url="/WEB-INF/views/layout/cabecalho.jsp" />
 
 <main role="main" class="inner cover">
-    <form method="post" action="criar">
+    <form method="post" action="/sedes/criar">
         <div class="form-group">
             <label for="nomeSede">Nome da Sede</label>
             <input type="text" class="form-control" name="nome" id="nomeSede" placeholder="Digite o nome da sede" required>

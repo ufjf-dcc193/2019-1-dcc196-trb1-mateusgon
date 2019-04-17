@@ -57,8 +57,8 @@ public class SedesController {
         return mv;
     }
 
-    @RequestMapping(value = { "/editar" }, method = RequestMethod.GET)
-    public ModelAndView carregaEditar(@RequestParam(value = "id", required = true) Long id) {
+    @RequestMapping(value = { "/editar/{id}" }, method = RequestMethod.GET)
+    public ModelAndView carregaEditar(@PathVariable(value = "id", required = true) Long id) {
         Sede sede = repositorySede.getOne(id);
         ModelAndView mv = new ModelAndView();
         mv.addObject("sede", sede);
@@ -77,8 +77,8 @@ public class SedesController {
         return mv;
     }
 
-    @RequestMapping(value = { "/detalhes" }, method = RequestMethod.GET)
-    public ModelAndView carregaDetalhes(@RequestParam(value = "id", required = true) String id) {
+    @RequestMapping(value = { "/detalhes/{id}" }, method = RequestMethod.GET)
+    public ModelAndView carregaDetalhes(@PathVariable(value = "id", required = true) String id) {
         long id2 = Long.valueOf(id).longValue();
         Sede sede = repositorySede.getOne(id2);
         ModelAndView mv = new ModelAndView();
@@ -159,8 +159,8 @@ public class SedesController {
         return categorias;
     }
 
-    @RequestMapping(value = { "/excluir" }, method = RequestMethod.GET)
-    public ModelAndView carregaExcluir(@RequestParam(value = "id", required = true) Long id) {
+    @RequestMapping(value = { "/excluir/{id}" }, method = RequestMethod.GET)
+    public ModelAndView carregaExcluir(@PathVariable(value = "id", required = true) Long id) {
         repositorySede.deleteById(id);
         ModelAndView mv = new ModelAndView();
         List<Sede> sedes = repositorySede.findAll();
