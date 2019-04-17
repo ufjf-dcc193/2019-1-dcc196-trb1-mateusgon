@@ -6,6 +6,12 @@ $(document).ready(function () {
     }
     else if (url_atual.includes("sedes")) {
         $('#link2').addClass("active");
+        if (url_atual.includes("detalhes")) {
+            console.log(url_atual);
+            var partes = url_atual.split('=');
+            var valor = partes[1];
+            carregaTabelaCategoria(valor);
+        }
     }
     else if (url_atual.includes("membros")) {
         $('#link3').addClass("active");
@@ -23,28 +29,9 @@ $(document).ready(function () {
     else {
         carregarCidadesEEstadosModificado();
     }
-
-    $('#button').click(function () {
-
-        var first = $('#firstInput').val();
-        var last = $('#lastInput').val();
-
-        $.ajax({
-            type: 'GET',
-            url: "sedes/detalhes/"+first+"/"+last,
-            dataType: 'json',
-            success: function (resultados) {
-                
-            },
-            error: function () {
-                alert("Erro ao realizar requisição!");
-            }
-
-        });
-    });
 });
 
-function carregarCidadesEEstados() {
+carregarCidadesEEstados = function () {
     $.getJSON('/json/estados_cidades.json', function (data) {
         var items = [];
         var options = '<option value="">Escolha um estado</option>';
@@ -76,7 +63,7 @@ function carregarCidadesEEstados() {
     });
 }
 
-function carregarCidadesEEstadosModificado() {
+carregarCidadesEEstadosModificado = function () {
     $.getJSON('/json/estados_cidades.json', function (data) {
         var atual = $("#estadoAtual").val();
         var items = [];
@@ -116,3 +103,87 @@ function carregarCidadesEEstadosModificado() {
 
     });
 }
+
+carregaTabela = function (infoSede, id) {
+    $("#idTabela thead").remove();
+    $("#idTabela tbody").remove();
+    var tipoInfoSede = infoSede;
+    var idSede = id;
+    $.ajax({
+        type: 'GET',
+        url: "/sedes/detalhes/" + tipoInfoSede + "/" + idSede,
+        dataType: 'json',
+        success: function (data) {
+            console.log(data);
+            if (tipoInfoSede.includes("atividades")) {
+                var cabecalho = $("<thead> <tr> <th>Atividades</th> <th>Categoria/Horas</th> <th>Opções</th> </tr> </thead> <tbody>");
+                $("#idTabela").append(cabecalho);
+                for (var i = 0; i < data.length; i++) {
+                    var newRow = $("<tr>");
+                    var cols = "";
+
+                    cols += '<td>' + data[i].titulo + '</td>';
+                    cols += '<td>' + data[i].categoria + '/' + data[i].horasDeAtividade + '</td>';
+                    cols += '<td> <a href="/atividades/detalhes?id=' + data[i].id + '" > <i class="material-icons">&#xe88e; </i> </a>' +
+                        '<a href="/atividades/editar?id=' + data[i].id + '"><i class="material-icons">&#xe254;</i></a>' +
+                        '<a href="/atividades/excluir?id=' + data[i].id + '" ><i class="material-icons">&#xe872;</i></a> </td> </tr>';
+                    newRow.append(cols);
+                    $("#idTabela").append(newRow);
+                }
+                $("#idTabela").append("</tbody>")
+            }
+            else {
+                var cabecalho = $("<thead> <tr> <th>Membros</th> <th>Email</th> <th>Opções</th> </tr> </thead> <tbody>");
+                $("#idTabela").append(cabecalho);
+                for (var i = 0; i < data.length; i++) {
+                    var newRow = $("<tr>");
+                    var cols = "";
+
+                    cols += '<td>' + data[i].name + '</td>';
+                    cols += '<td>' + data[i].email + '</td>';
+                    cols += '<td> <a href="/membros/detalhes?id=' + data[0].id + '" > <i class="material-icons">&#xe88e; </i> </a>' +
+                        '<a href="/membros/editar?id=' + data[0].id + '"><i class="material-icons">&#xe254;</i></a>' +
+                        '<a href="/membros/excluir?id=' + data[0].id + '" ><i class="material-icons">&#xe872;</i></a> </td> </tr>';
+                    newRow.append(cols);
+                    $("#idTabela").append(newRow);
+                }
+                $("#idTabela").append("</tbody>");
+            }
+        },
+        error: function () {
+            alert("Erro ao realizar requisição!");
+        }
+
+    });
+}
+
+carregaTabelaCategoria = function (id) {
+    $("#idTabela thead").remove();
+    $("#idTabela tbody").remove();
+    var idSede = id;
+    $.ajax({
+        type: 'GET',
+        url: "/sedes/detalhescategoria/" + idSede,
+        dataType: 'json',
+        success: function (data) {
+            var cabecalho = $("<thead> <tr> <th>Categoria</th> <th>Horas</th> <th>Número de atividades</th></tr> </thead> <tbody>");
+            $("#idTabela").append(cabecalho);
+            for (var i = 0; i < data.length; i++) {
+                var newRow = $("<tr>");
+                var cols = "";
+
+                cols += '<td>' + data[i].nome + '</td>';
+                cols += '<td>' + data[i].horas + '</td>';
+                cols += '<td>' + data[i].numeroDeAtividades + '</td>';
+                newRow.append(cols);
+                $("#idTabela").append(newRow);
+            }
+            $("#idTabela").append("</tbody>")
+        },
+        error: function () {
+            alert("Erro ao realizar requisição!");
+        }
+
+    });
+}
+

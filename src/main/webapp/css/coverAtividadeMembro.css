@@ -19,7 +19,37 @@ a:hover {
   border: .05rem solid #fff;
 }
 
+.abas {
+  position: relative;
+  padding: inherit;
+  }
+  .aba {
+  display: inline;
+  }
+  .aba > a {
+  float: center;
+  padding: 0.5em 1em;
+  background: transparent(#FFF, #EEE);
+  border-width: 1px;
+  }
 
+  .aba:not(:target) a {
+  border-bottom: 0 none;
+  }
+  .aba:target a, a:hover {
+  background: white;
+  }
+  .conteudo {
+  position: absolute;
+  left: 0;
+  top: calc(2em + 4px); /* altura do link + bordas */
+  z-index: -2;
+  border: 1px solid #CCC;
+  background-color: white;
+  }
+  .aba:target .conteudo {
+  z-index: -1;
+  }
 /*
  * Base structure
  */
@@ -39,8 +69,9 @@ body {
 }
 
 .cover-container {
-  max-width: 42em;
+  max-width: 50em;
 }
+
 
 
 /*
