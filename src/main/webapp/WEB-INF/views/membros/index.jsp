@@ -17,9 +17,9 @@
           <td>${membro.name}</td>
           <td>${membro.sede.nome}</td>
           <td>
-            <a href="/membros/detalhes?id=${membro.id}" ><i class="material-icons">&#xe88e;</i></a>            
-            <a href="/membros/editar?id=${membro.id}" ><i class="material-icons">&#xe254;</i></a>
-            <a href="/membros/excluir?id=${membro.id}" ><i class="material-icons">&#xe872;</i></a>
+            <a href="/membros/detalhes/${membro.id}" ><i class="material-icons">&#xe88e;</i></a>            
+            <a href="/membros/editar/${membro.id}" ><i class="material-icons">&#xe254;</i></a>
+            <a href="/membros/excluir/${membro.id}" ><i class="material-icons">&#xe872;</i></a>
           </td>
         </tr>
       </c:forEach>

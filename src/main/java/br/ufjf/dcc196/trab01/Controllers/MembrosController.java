@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -54,8 +55,8 @@ public class MembrosController {
         return mv;
     }
 
-    @RequestMapping(value = { "/editar" }, method = RequestMethod.GET)
-    public ModelAndView carregaEditar(@RequestParam(value = "id", required = true) Long id) {
+    @RequestMapping(value = { "/editar/{id}" }, method = RequestMethod.GET)
+    public ModelAndView carregaEditar(@PathVariable(value = "id", required = true) Long id) {
         Membro membro = repositoryMembro.getOne(id);
         SimpleDateFormat formatBra = new SimpleDateFormat("yyyy-MM-dd");
         String dataDeEntrada = formatBra.format(membro.getDataDeEntrada());
@@ -71,9 +72,8 @@ public class MembrosController {
         return mv;
     }
 
-    @RequestMapping(value = {"/editar"}, method = RequestMethod.POST)
-    public ModelAndView recebeEditar(@RequestParam(value = "id", required = true) Long id, Membro membro)
-    {
+    @RequestMapping(value = { "/editar" }, method = RequestMethod.POST)
+    public ModelAndView recebeEditar(@RequestParam(value = "id", required = true) Long id, Membro membro) {
         membro.setId(id);
         repositoryMembro.save(membro);
         ModelAndView mv = new ModelAndView();
@@ -83,15 +83,22 @@ public class MembrosController {
         return mv;
     }
 
-    @RequestMapping(value = { "/detalhes" }, method = RequestMethod.GET)
-    public ModelAndView carregaDetalhes(@RequestParam(value = "id", required = true) Long id) {
+    @RequestMapping(value = { "/detalhes/{id}" }, method = RequestMethod.GET)
+    public ModelAndView carregaDetalhes(@PathVariable(value = "id", required = true) Long id) {
         Membro membro = repositoryMembro.getOne(id);
-        Sede sede = membro.getSede();
-        return null;
+        SimpleDateFormat formatBra = new SimpleDateFormat("yyyy-MM-dd");
+        String dataDeEntrada = formatBra.format(membro.getDataDeEntrada());
+        String dataDeSaida = formatBra.format(membro.getDataDeSaida());
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("dataDeEntrada", dataDeEntrada);
+        mv.addObject("dataDeSaida", dataDeSaida);
+        mv.addObject("membro", membro);
+        mv.setViewName("membros/detalhes");
+        return mv;
     }
 
-    @RequestMapping(value = { "/excluir" }, method = RequestMethod.GET)
-    public ModelAndView carregaExcluir(@RequestParam(value = "id", required = true) Long id) {
+    @RequestMapping(value = { "/excluir/{id}" }, method = RequestMethod.GET)
+    public ModelAndView carregaExcluir(@PathVariable(value = "id", required = true) Long id) {
         repositoryMembro.deleteById(id);
         ModelAndView mv = new ModelAndView();
         List<Membro> membros = repositoryMembro.findAll();

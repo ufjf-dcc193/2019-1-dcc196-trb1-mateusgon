@@ -3,7 +3,7 @@
 <c:import url="/WEB-INF/views/layout/cabecalho.jsp" />
 
 <main role="main" class="inner cover">
-    <form method="post" action="criar">
+    <form method="post" action="/membros/editar">
         <div class="form-group">
             <label for="nomeMembro">Nome do membro</label>
             <input type="text" value="${membro.name}" class="form-control" name="name" id="nomeMembro"

@@ -19,13 +19,15 @@ a:hover {
   border: .05rem solid #fff;
 }
 
-.abas {
+  .abas {
   position: relative;
   padding: inherit;
   }
+  
   .aba {
   display: inline;
   }
+  
   .aba > a {
   float: center;
   padding: 0.5em 1em;
@@ -36,9 +38,7 @@ a:hover {
   .aba:not(:target) a {
   border-bottom: 0 none;
   }
-  .aba:target a, a:hover {
-  background: white;
-  }
+    
   .conteudo {
   position: absolute;
   left: 0;
@@ -47,9 +47,11 @@ a:hover {
   border: 1px solid #CCC;
   background-color: white;
   }
+  
   .aba:target .conteudo {
   z-index: -1;
   }
+
 /*
  * Base structure
  */
@@ -71,8 +73,6 @@ body {
 .cover-container {
   max-width: 50em;
 }
-
-
 
 /*
  * Header

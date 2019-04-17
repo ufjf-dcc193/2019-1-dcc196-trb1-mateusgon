@@ -6,7 +6,7 @@
     <form method="post" action="criar">
         <div class="form-group">
             <label for="tituloAtividade">Título da atividade</label>
-            <input type="text" class="form-control" name="titulo" value=${atividade.titulo} id="tituloAtividade"
+            <input type="text" class="form-control" name="titulo" value="${atividade.titulo}" id="tituloAtividade"
                 placeholder="Digite o título da atividade" required>
         </div>
         <div class="form-group">
