@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,9 +25,8 @@ public class AtividadesController {
     @Autowired
     private SedeRepository repositorySede;
 
-    @RequestMapping(value = {"/", "", "/index"})
-    public ModelAndView home()
-    {
+    @RequestMapping(value = { "/", "", "/index" })
+    public ModelAndView home() {
         ModelAndView mv = new ModelAndView();
         List<Atividade> atividades = repositoryAtividade.findAll();
         mv.addObject("atividades", atividades);
@@ -34,9 +34,8 @@ public class AtividadesController {
         return mv;
     }
 
-    @RequestMapping(value = {"/criar"}, method = RequestMethod.GET)
-    public ModelAndView carregaForm()
-    {
+    @RequestMapping(value = { "/criar" }, method = RequestMethod.GET)
+    public ModelAndView carregaForm() {
         List<Sede> sedes = repositorySede.findAll();
         ModelAndView mv = new ModelAndView();
         mv.addObject("sedes", sedes);
@@ -44,9 +43,8 @@ public class AtividadesController {
         return mv;
     }
 
-    @RequestMapping(value = {"/criar"}, method = RequestMethod.POST)
-    public ModelAndView recebeForm(Atividade atividade, Long sedeAtividade)
-    {
+    @RequestMapping(value = { "/criar" }, method = RequestMethod.POST)
+    public ModelAndView recebeForm(Atividade atividade, Long sedeAtividade) {
         Sede sede = repositorySede.getOne(sedeAtividade);
         atividade.setSede(sede);
         repositoryAtividade.save(atividade);
@@ -57,8 +55,8 @@ public class AtividadesController {
         return mv;
     }
 
-    @RequestMapping(value = { "/editar" }, method = RequestMethod.GET)
-    public ModelAndView carregaEditar(@RequestParam(value = "id", required = true) Long id) {
+    @RequestMapping(value = { "/editar/{id}" }, method = RequestMethod.GET)
+    public ModelAndView carregaEditar(@PathVariable(value = "id", required = true) Long id) {
         Atividade atividade = repositoryAtividade.getOne(id);
         SimpleDateFormat formatBra = new SimpleDateFormat("yyyy-MM-dd");
         String dataDeInicio = formatBra.format(atividade.getDataDeInicio());
@@ -74,9 +72,8 @@ public class AtividadesController {
         return mv;
     }
 
-    @RequestMapping(value = {"/editar"}, method = RequestMethod.POST)
-    public ModelAndView recebeEditar(@RequestParam(value = "id", required = true) Long id, Atividade atividade)
-    {
+    @RequestMapping(value = { "/editar" }, method = RequestMethod.POST)
+    public ModelAndView recebeEditar(@RequestParam(value = "id", required = true) Long id, Atividade atividade) {
         atividade.setId(id);
         repositoryAtividade.save(atividade);
         ModelAndView mv = new ModelAndView();
@@ -86,18 +83,22 @@ public class AtividadesController {
         return mv;
     }
 
-
-    @RequestMapping(value = {"/detalhes"}, method = RequestMethod.GET)
-    public ModelAndView carregaDetalhes(@RequestParam(value = "id", required = true) Long id)
-    {
+    @RequestMapping(value = { "/detalhes/{id}" }, method = RequestMethod.GET)
+    public ModelAndView carregaDetalhes(@PathVariable(value = "id", required = true) Long id) {
+        ModelAndView mv = new ModelAndView();
         Atividade atividade = repositoryAtividade.getOne(id);
-        Sede sede = atividade.getSede();
-        return null;
+        SimpleDateFormat formatBra = new SimpleDateFormat("yyyy-MM-dd");
+        String dataDeInicio = formatBra.format(atividade.getDataDeInicio());
+        String dataDeFim = formatBra.format(atividade.getDataDeFim());
+        mv.addObject("dataDeInicio", dataDeInicio);
+        mv.addObject("dataDeFim", dataDeFim);
+        mv.addObject("atividade", atividade);
+        mv.setViewName("atividades/detalhes");
+        return mv;
     }
 
-    @RequestMapping(value = {"/excluir"}, method = RequestMethod.GET)
-    public ModelAndView carregaExcluir(@RequestParam(value = "id", required = true) Long id)
-    {
+    @RequestMapping(value = { "/excluir/{id}" }, method = RequestMethod.GET)
+    public ModelAndView carregaExcluir(@PathVariable(value = "id", required = true) Long id) {
         repositoryAtividade.deleteById(id);
         ModelAndView mv = new ModelAndView();
         List<Atividade> atividades = repositoryAtividade.findAll();

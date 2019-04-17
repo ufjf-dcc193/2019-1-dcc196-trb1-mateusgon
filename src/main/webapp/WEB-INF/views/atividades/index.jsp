@@ -18,9 +18,9 @@
           <td>${atividade.titulo}</td>
           <td>${atividade.sede.nome}</td>
           <td>
-            <a href="/atividades/detalhes?id=${atividade.id}" ><i class="material-icons">&#xe88e;</i></a>            
-            <a href="/atividades/editar?id=${atividade.id}" ><i class="material-icons">&#xe254;</i></a>
-            <a href="/atividades/excluir?id=${atividade.id}" ><i class="material-icons">&#xe872;</i></a>
+            <a href="/atividades/detalhes/${atividade.id}" ><i class="material-icons">&#xe88e;</i></a>            
+            <a href="/atividades/editar/${atividade.id}" ><i class="material-icons">&#xe254;</i></a>
+            <a href="/atividades/excluir/${atividade.id}" ><i class="material-icons">&#xe872;</i></a>
           </td>
         </tr>
       </c:forEach>
