@@ -50,10 +50,9 @@ public class SedesController {
     @RequestMapping(value = { "/criar" }, method = RequestMethod.POST)
     public ModelAndView recebeForm(Sede sede) {
         repositorySede.save(sede);
-        ModelAndView mv = new ModelAndView();
         List<Sede> sedes = repositorySede.findAll();
+        ModelAndView mv = new ModelAndView("redirect:/sedes");
         mv.addObject("sedes", sedes);
-        mv.setViewName("sedes/index");
         return mv;
     }
 
@@ -70,10 +69,9 @@ public class SedesController {
     public ModelAndView recebeEditar(@RequestParam(value = "id", required = true) Long id, Sede sede) {
         sede.setId(id);
         repositorySede.save(sede);
-        ModelAndView mv = new ModelAndView();
         List<Sede> sedes = repositorySede.findAll();
+        ModelAndView mv = new ModelAndView("redirect:/sedes");
         mv.addObject("sedes", sedes);
-        mv.setViewName("sedes/index");
         return mv;
     }
 
@@ -103,7 +101,7 @@ public class SedesController {
             List<Membro> membrosFinais = new ArrayList<>();
             List<Membro> membros = repositoryMembro.findAll();
             for (Membro membro : membros) {
-                if (membro.getSede().getId() == id) {
+                if (membro.getSede().getId().equals(id)) {
                     membrosFinais.add(membro);
                 }
             }
@@ -113,6 +111,21 @@ public class SedesController {
 
     @RequestMapping(value = { "/detalhescategoria/{id}" }, method = RequestMethod.GET)
     public @ResponseBody List getInfoTabelaCategoria(@PathVariable("id") Long id) {
+        return getCategorias(id);
+    }
+
+    @RequestMapping(value = { "/excluir/{id}" }, method = RequestMethod.GET)
+    public ModelAndView carregaExcluir(@PathVariable(value = "id", required = true) Long id) {
+        repositorySede.deleteById(id);
+        List<Sede> sedes = repositorySede.findAll();
+        ModelAndView mv = new ModelAndView("redirect:/sedes");
+        mv.addObject("sedes", sedes);
+        mv.setViewName("sedes/index");
+        return mv;
+    }
+
+    public List<Categoria> getCategorias(Long id)
+    {
         List<Categoria> categorias = new ArrayList<>();
         Categoria categoria1 = new Categoria("Assistencial", 0.0, 0);
         Categoria categoria2 = new Categoria("Jurídica", 0.0, 0);
@@ -138,34 +151,24 @@ public class SedesController {
                     categorias.get(1).setHoras(valorAtual);
                     Integer numAtividades = categorias.get(1).getNumeroDeAtividades();
                     numAtividades += 1;
-                    categorias.get(0).setNumeroDeAtividades(numAtividades);
+                    categorias.get(1).setNumeroDeAtividades(numAtividades);
                 } else if (atv.getCategoria().equals("Financeira")) {
                     Double valorAtual = categorias.get(2).getHoras();
                     valorAtual += atv.getHorasDeAtividade();
                     categorias.get(2).setHoras(valorAtual);
                     Integer numAtividades = categorias.get(2).getNumeroDeAtividades();
                     numAtividades += 1;
-                    categorias.get(0).setNumeroDeAtividades(numAtividades);
+                    categorias.get(2).setNumeroDeAtividades(numAtividades);
                 } else {
                     Double valorAtual = categorias.get(3).getHoras();
                     valorAtual += atv.getHorasDeAtividade();
                     categorias.get(3).setHoras(valorAtual);
                     Integer numAtividades = categorias.get(3).getNumeroDeAtividades();
                     numAtividades += 1;
-                    categorias.get(0).setNumeroDeAtividades(numAtividades);
+                    categorias.get(3).setNumeroDeAtividades(numAtividades);
                 }
             }
         }
         return categorias;
-    }
-
-    @RequestMapping(value = { "/excluir/{id}" }, method = RequestMethod.GET)
-    public ModelAndView carregaExcluir(@PathVariable(value = "id", required = true) Long id) {
-        repositorySede.deleteById(id);
-        ModelAndView mv = new ModelAndView();
-        List<Sede> sedes = repositorySede.findAll();
-        mv.addObject("sedes", sedes);
-        mv.setViewName("sedes/index");
-        return mv;
     }
 }

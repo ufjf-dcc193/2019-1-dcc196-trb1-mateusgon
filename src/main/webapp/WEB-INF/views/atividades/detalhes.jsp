@@ -13,7 +13,7 @@
         </thead>
         <tbody>
             <tr>
-                <td>Título: ${atividade.titulo}</td>
+                <td>Título: ${atividade.titulo} || Horas: ${atividade.horasDeAtividade} </td>
                 <td>Categoria: ${atividade.categoria}</td>
                 <td>Data de início: ${dataDeInicio} </td>
             </tr>

@@ -48,8 +48,8 @@ public class AtividadesController {
         Sede sede = repositorySede.getOne(sedeAtividade);
         atividade.setSede(sede);
         repositoryAtividade.save(atividade);
-        ModelAndView mv = new ModelAndView();
         List<Atividade> atividades = repositoryAtividade.findAll();
+        ModelAndView mv = new ModelAndView("redirect:/atividades");
         mv.addObject("atividades", atividades);
         mv.setViewName("atividades/index");
         return mv;
@@ -76,8 +76,8 @@ public class AtividadesController {
     public ModelAndView recebeEditar(@RequestParam(value = "id", required = true) Long id, Atividade atividade) {
         atividade.setId(id);
         repositoryAtividade.save(atividade);
-        ModelAndView mv = new ModelAndView();
         List<Atividade> atividades = repositoryAtividade.findAll();
+        ModelAndView mv = new ModelAndView("redirect:/atividades");
         mv.addObject("atividades", atividades);
         mv.setViewName("atividades/index");
         return mv;
@@ -100,9 +100,9 @@ public class AtividadesController {
     @RequestMapping(value = { "/excluir/{id}" }, method = RequestMethod.GET)
     public ModelAndView carregaExcluir(@PathVariable(value = "id", required = true) Long id) {
         repositoryAtividade.deleteById(id);
-        ModelAndView mv = new ModelAndView();
         List<Atividade> atividades = repositoryAtividade.findAll();
-        mv.addObject("membros", atividades);
+        ModelAndView mv = new ModelAndView("redirect:/atividades");
+        mv.addObject("atividades", atividades);
         mv.setViewName("atividades/index");
         return mv;
     }

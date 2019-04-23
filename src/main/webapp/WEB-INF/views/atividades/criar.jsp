@@ -3,7 +3,7 @@
 <c:import url="/WEB-INF/views/layout/cabecalho.jsp" />
 
 <main role="main" class="inner cover">
-    <form method="post" action="criar">
+    <form method="post" action="/atividades/criar">
         <div class="form-group">
             <label for="tituloAtividade">Título da atividade</label>
             <input type="text" class="form-control" name="titulo" id="tituloAtividade"

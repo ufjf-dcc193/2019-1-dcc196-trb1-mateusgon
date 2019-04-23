@@ -48,8 +48,8 @@ public class MembrosController {
         Sede sede = repositorySede.getOne(sedeMembro);
         membro.setSede(sede);
         repositoryMembro.save(membro);
-        ModelAndView mv = new ModelAndView();
         List<Membro> membros = repositoryMembro.findAll();
+        ModelAndView mv = new ModelAndView("redirect:/membros");
         mv.addObject("membros", membros);
         mv.setViewName("membros/index");
         return mv;
@@ -76,8 +76,8 @@ public class MembrosController {
     public ModelAndView recebeEditar(@RequestParam(value = "id", required = true) Long id, Membro membro) {
         membro.setId(id);
         repositoryMembro.save(membro);
-        ModelAndView mv = new ModelAndView();
         List<Membro> membros = repositoryMembro.findAll();
+        ModelAndView mv = new ModelAndView("redirect:/membros");
         mv.addObject("membros", membros);
         mv.setViewName("membros/index");
         return mv;
@@ -100,8 +100,8 @@ public class MembrosController {
     @RequestMapping(value = { "/excluir/{id}" }, method = RequestMethod.GET)
     public ModelAndView carregaExcluir(@PathVariable(value = "id", required = true) Long id) {
         repositoryMembro.deleteById(id);
-        ModelAndView mv = new ModelAndView();
         List<Membro> membros = repositoryMembro.findAll();
+        ModelAndView mv = new ModelAndView("redirect:/membros");
         mv.addObject("membros", membros);
         mv.setViewName("membros/index");
         return mv;

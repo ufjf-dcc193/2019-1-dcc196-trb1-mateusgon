@@ -3,7 +3,7 @@
 <c:import url="/WEB-INF/views/layout/cabecalho.jsp" />
 
 <main role="main" class="inner cover">
-    <form method="post" action="criar">
+    <form method="post" action="/atividades/editar">
         <div class="form-group">
             <label for="tituloAtividade">Título da atividade</label>
             <input type="text" class="form-control" name="titulo" value="${atividade.titulo}" id="tituloAtividade"
@@ -14,7 +14,7 @@
             <textarea name="descricao">${atividade.descricao}</textarea>
         </div>
         <div class="form-group">
-            <label for="categoria">Escolha a categoria</label>
+            <label for="categoria">Escolha a categoria (Confira a categoria)</label>
             <select name="categoria" class="form-control" id="categoria" required>
                 <option value="Assistencial"> Assistencial </option>
                 <option value="Jurídica"> Jurídica </option>
